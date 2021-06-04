@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   
+    <h:head>
+        <title>Facelet Title</title>
+
+    </h:head>
+    <h:body>
+        <h1>Formulario de Registro</h1>
+        <h:form>
+            <h:panelGrid columns="3" columnClasses="alinder,alinizq,alinizq">
+                <h:outputLabel value="Saludo: " for="saludo"/>
+                <h:selectOneMenu id="saludo" label="Saludo" value="#{registroBean.saludo}">
+                    <f:selectItem itemLabel="-seleccione-" itemValue=""/>
+                    <f:selectItem itemLabel="Sr." itemValue="SR"/>
+                    <f:selectItem itemLabel="Sra." itemValue="SRA"/>
+                    <f:selectItem itemLabel="Ing." itemValue="ING"/>
+                </h:selectOneMenu>
+                <h:message for="saludo"/>
+                
+                <h:outputLabel value="Nombre: " for="nombre"/>
+                <h:inputText id="nombre" label="Nombre" value="#{registroBean.nombre}">
+                <f:validateLength minimum="5"/>
+                </h:inputText>
+                <h:message for="nombre"/>
+                
+                <h:outputLabel value="Apellidos: " for="apellidos"/>
+                <h:inputText id="apellidos" label="Apellidos" required="true" value="#{registroBean.apellidos}"/>
+                <h:message for="apellidos"/>
+                
+                <h:outputLabel value="Edad: " for="edad"/>
+                <h:inputText id="edad" label="Edad" size="2" required="true" value="#{registroBean.edad}">
+                <f:validateLongRange minimum="12" maximum="90" />
+                </h:inputText>
+                <h:message for="edad"/>
+                
+                <h:outputLabel value="Correo: " for="correo"/>
+                <h:inputText id="correo" label="Correo" required="true" value="#{registroBean.correo}">
+                    <f:validator validatorId="validadorCorreo"/>
+                </h:inputText>
+                <h:message for="correo"/>
+                
+                <h:panelGroup/>
+                <h:commandButton id="registro" value="Enviar" action="confirmacion"/>
+            </h:panelGrid>
+                
+        </h:form>
+    </h:body>
+</html>
+
